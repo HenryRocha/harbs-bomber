@@ -37,9 +37,16 @@ public class MovimentoBola : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        float dirX = Random.Range(-5.0f, 5.0f);
-        float dirY = Random.Range(1.0f, 5.0f);
+        if (col.gameObject.CompareTag("Player"))
+        {
+            float dirX = Random.Range(-5.0f, 5.0f);
+            float dirY = Random.Range(1.0f, 5.0f);
 
-        direction = new Vector3(dirX, dirY).normalized;
+            direction = new Vector3(dirX, dirY).normalized;
+        }
+        else if (col.gameObject.CompareTag("Bloco"))
+        {
+            direction = new Vector3(direction.x, -direction.y);
+        }
     }
 }
