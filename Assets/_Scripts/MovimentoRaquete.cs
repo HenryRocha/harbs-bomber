@@ -6,7 +6,7 @@ public class MovimentoRaquete : MonoBehaviour
 {
     // Add slider on Unity's UI.
     [Range(1, 10)]
-    public float speed = 8f;
+    public float speed = 8.0f;
 
     // Start is called before the first frame update
     void Start()
