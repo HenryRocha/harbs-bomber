@@ -12,6 +12,8 @@ public class MovimentoBola : MonoBehaviour
     private Vector2 screenBounds;
     private float objectWidth;
     private float objectHeight;
+    private bool gameStarted = false;
+    public Transform ballDefaultPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -36,32 +38,44 @@ public class MovimentoBola : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 currentPos = transform.position;
-        Vector2 speed = rb2d.velocity;
-        
-        // Right side
-        if (currentPos.x > screenBounds.x - objectWidth) {
-            speed.x = -baseSpeed;
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            gameStarted = true;
         }
 
-        // Left side
-        if (currentPos.x < - screenBounds.x + objectWidth) {
-            speed.x = baseSpeed;
+        if (!gameStarted) 
+        {
+            transform.position = ballDefaultPosition.position;
         }
+        else
+        {
 
-        // Top side
-        if (currentPos.y > screenBounds.y - objectHeight) {
-            speed.y = -baseSpeed;
-        }
+            Vector3 currentPos = transform.position;
+            Vector2 speed = rb2d.velocity;
+            
+            // Right side
+            if (currentPos.x > screenBounds.x - objectWidth) {
+                speed.x = -baseSpeed;
+            }
 
-        // Bottom side
-        if (currentPos.y < - screenBounds.y + objectHeight) {
-            speed.x = 0;
-            speed.y = 0;
+            // Left side
+            if (currentPos.x < - screenBounds.x + objectWidth) {
+                speed.x = baseSpeed;
+            }
+
+            // Top side
+            if (currentPos.y > screenBounds.y - objectHeight) {
+                speed.y = -baseSpeed;
+            }
+
+            // Bottom side
+            if (currentPos.y < - screenBounds.y + objectHeight) {
+                speed.x = 0;
+                speed.y = 0;
+                rb2d.velocity = speed;
+                return;
+            }
+
             rb2d.velocity = speed;
-            return;
         }
-
-        rb2d.velocity = speed;
     }
 }
