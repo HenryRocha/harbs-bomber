@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class BlocoBehaviour : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Destroy(gameObject);
-    }
+    // private void OnTriggerEnter2D(Collider2D collision)
+    // {
+    //     Destroy(gameObject);
+    // }
 
     // Start is called before the first frame update
     void Start()
@@ -19,5 +19,10 @@ public class BlocoBehaviour : MonoBehaviour
     void Update()
     {
 
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        Debug.Log("Bateu!");
     }
 }

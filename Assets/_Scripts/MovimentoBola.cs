@@ -5,48 +5,63 @@ using UnityEngine;
 public class MovimentoBola : MonoBehaviour
 {
     [Range(1, 15)]
-    public float speed = 5.0f;
+    public float baseSpeed = 5.0f;
 
-    private Vector3 direction;
+    private Rigidbody2D rb2d;
+    
+    private Vector2 screenBounds;
+    private float objectWidth;
+    private float objectHeight;
 
     // Start is called before the first frame update
     void Start()
     {
-        float dirX = Random.Range(-5.0f, 5.0f);
-        float dirY = Random.Range(1.0f, 5.0f);
+        // Get the screen boundaries.
+        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+        
+        // Get the components dimensions.
+        objectWidth = transform.GetComponent<SpriteRenderer>().bounds.extents.x; //extents = size of width / 2
+        objectHeight = transform.GetComponent<SpriteRenderer>().bounds.extents.y; //extents = size of height / 2
 
-        direction = new Vector3(dirX, dirY).normalized;
+        // Get the components rigid body.
+        rb2d = GetComponent<Rigidbody2D>();
+
+        // Set the components initial speed.
+        Vector2 speed = rb2d.velocity;
+        speed.x = -baseSpeed;
+        speed.y = baseSpeed;
+        rb2d.velocity = speed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += direction * Time.deltaTime * speed;
-
-        Vector2 positionViewport = Camera.main.WorldToViewportPoint(transform.position);
-
-        if (positionViewport.x < 0 || positionViewport.x > 1)
-        {
-            direction = new Vector3(-direction.x, direction.y);
+        Vector3 currentPos = transform.position;
+        Vector2 speed = rb2d.velocity;
+        
+        // Right side
+        if (currentPos.x > screenBounds.x - objectWidth) {
+            speed.x = -baseSpeed;
         }
-        if (positionViewport.y < 0 || positionViewport.y > 1)
-        {
-            direction = new Vector3(direction.x, -direction.y);
-        }
-    }
 
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.gameObject.CompareTag("Player"))
-        {
-            float dirX = Random.Range(-5.0f, 5.0f);
-            float dirY = Random.Range(1.0f, 5.0f);
+        // Left side
+        if (currentPos.x < - screenBounds.x + objectWidth) {
+            speed.x = baseSpeed;
+        }
 
-            direction = new Vector3(dirX, dirY).normalized;
+        // Top side
+        if (currentPos.y > screenBounds.y - objectHeight) {
+            speed.y = -baseSpeed;
         }
-        else if (col.gameObject.CompareTag("Bloco"))
-        {
-            direction = new Vector3(direction.x, -direction.y);
+
+        // Bottom side
+        if (currentPos.y < - screenBounds.y + objectHeight) {
+            speed.x = 0;
+            speed.y = 0;
+            rb2d.velocity = speed;
+            return;
         }
+
+        rb2d.velocity = speed;
     }
 }
