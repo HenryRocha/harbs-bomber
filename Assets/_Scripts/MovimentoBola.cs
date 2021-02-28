@@ -12,6 +12,9 @@ public class MovimentoBola : MonoBehaviour
     private bool gameStarted = false;
     public Transform ballDefaultPosition;
 
+    // Reference to the LivesUI class.
+    public LivesUI livesUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +47,7 @@ public class MovimentoBola : MonoBehaviour
         {
             gameStarted = false;
             rb2d.velocity = Vector2.zero;
+            livesUI.UpdateLives(-1);
         }
     }
 }
