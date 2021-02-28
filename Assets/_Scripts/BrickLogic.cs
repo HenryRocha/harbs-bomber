@@ -21,12 +21,18 @@ public class BrickLogic : MonoBehaviour
     // Variable to store the starting amount of hitpoints.
     public int startingHitpoints;
 
+
+    [SerializeField]
+    private AudioSource audioSource;
+
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
     /// any of the Update methods is called the first time.
     /// </summary>
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         spriteRenderer.sprite = sprites[hitpoints];
         startingHitpoints = hitpoints;
     }
@@ -52,7 +58,8 @@ public class BrickLogic : MonoBehaviour
         if (hitpoints < 0)
         {
             pointsUI.UpdatePoints(+100 * startingHitpoints);
-            Destroy(this.gameObject);
+            audioSource.Play();
+            Destroy(this.gameObject, audioSource.clip.length);
         }
         else
         {
