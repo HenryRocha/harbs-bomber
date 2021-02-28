@@ -18,14 +18,20 @@ public class BrickSpawner : MonoBehaviour
     /// </summary>
     void Start()
     {
-        for (int i = 1; i <= 9; i++)
+        for (int i = 1; i <= 10; i++)
         {
-            for (int j = 1; j <= 5; j++)
+            for (int j = 1; j <= 6; j++)
             {
-                Vector3 position = new Vector3(-8.5f + 1.7f * i, 0 + 0.8f * j);
+                // Create a new brick, based on the BrickPrefab.
+                Vector3 position = new Vector3(-8.8f + 1.6f * i, 0 + 0.6f * j);
                 GameObject newBrick = Instantiate(BrickPrefab, position, Quaternion.identity, transform);
+
+                // Pass the reference to the new brick.
                 newBrick.GetComponent<BrickLogic>().pointsUI = pointsUI;
-                newBrick.GetComponent<BrickLogic>().hitpoints = j * 2 - 1;
+
+                // Change the hitpoints for the new brick depending on which line it is at.
+                if (j == 6) newBrick.GetComponent<BrickLogic>().hitpoints = 9;
+                else newBrick.GetComponent<BrickLogic>().hitpoints = j * 2 - 1;
             }
         }
     }
