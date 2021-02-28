@@ -21,3 +21,9 @@
 - [x] Animações de Ambiente (100)
 - Audio:
 - [x] Efeitos sonoros (100)
+
+## Assets usados
+
+- [Pack de sprites Breakout](https://opengameart.org/content/breakout-brick-breaker-tile-set-free)
+- [Som ao destruir um bloco](https://soundbible.com/2067-Blop.html)
+- [Imagem de fundo](https://opengameart.org/content/space-sprites)
