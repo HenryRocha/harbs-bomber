@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LivesUI : MonoBehaviour
 {
@@ -25,6 +26,13 @@ public class LivesUI : MonoBehaviour
     {
         // Add the change to the variable.
         lives += changeInLifes;
+
+        if (lives <= 0)
+        {
+            SceneManager.LoadScene("YouLose");
+            return;
+        }
+
         // Update the display.
         UpdateText(lives);
     }
