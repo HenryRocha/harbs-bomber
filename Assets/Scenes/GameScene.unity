@@ -400,8 +400,8 @@ GameObject:
   - component: {fileID: 726130072}
   - component: {fileID: 726130071}
   - component: {fileID: 726130070}
-  - component: {fileID: 726130073}
   - component: {fileID: 726130074}
+  - component: {fileID: 726130073}
   m_Layer: 0
   m_Name: raquete
   m_TagString: Player
@@ -487,8 +487,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &726130073
-BoxCollider2D:
+--- !u!60 &726130073
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -510,9 +510,15 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.5, y: -0.5}
+      - {x: -0.5, y: 0.5}
+      - {x: -0.17625101, y: 1.1238611}
+      - {x: 0.0016824132, y: 1.1309266}
+      - {x: 0.20238094, y: 1.1334491}
+      - {x: 0.5, y: 0.5}
+      - {x: 0.5, y: -0.5}
 --- !u!50 &726130074
 Rigidbody2D:
   serializedVersion: 4
