@@ -6,6 +6,9 @@ public class BlocoSpawner : MonoBehaviour
 {
     public GameObject Brick;
 
+    // Reference to the PointsUI class.
+    public PointsUI pointsUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +17,8 @@ public class BlocoSpawner : MonoBehaviour
             for (int j = 0; j < 4; j++)
             {
                 Vector3 position = new Vector3(-9 + 1.55f * i, 4 - 0.55f * j);
-                Instantiate(Brick, position, Quaternion.identity, transform);
+                GameObject brick = Instantiate(Brick, position, Quaternion.identity, transform);
+                brick.GetComponent<BlocoBehaviour>().pointsUI = pointsUI;
             }
         }
     }

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BlocoBehaviour : MonoBehaviour
 {
+    // Reference to the PointsUI class.
+    public PointsUI pointsUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +21,7 @@ public class BlocoBehaviour : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
+        pointsUI.UpdatePoints(+1);
         Destroy(gameObject);
     }
 }
