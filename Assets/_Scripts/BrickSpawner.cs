@@ -1,6 +1,7 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BrickSpawner : MonoBehaviour
 {
@@ -33,6 +34,16 @@ public class BrickSpawner : MonoBehaviour
                 if (j == 6) newBrick.GetComponent<BrickLogic>().hitpoints = 9;
                 else newBrick.GetComponent<BrickLogic>().hitpoints = j * 2 - 1;
             }
+        }
+    }
+
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void Update()
+    {
+        if (transform.childCount <= 0) {
+            SceneManager.LoadScene("YouWin");
         }
     }
 }
