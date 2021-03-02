@@ -27,3 +27,8 @@
 - [Pack de sprites Breakout](https://opengameart.org/content/breakout-brick-breaker-tile-set-free)
 - [Som ao destruir um bloco](https://soundbible.com/2067-Blop.html)
 - [Imagem de fundo](https://opengameart.org/content/space-sprites)
+
+## Tutoriais usados
+
+- [Unity GameDev Tutorial for Beginners: Brick Breaker Game](https://youtu.be/NWG8vO02oj4)
+- [How to Make Looping Backgrounds [Unity Tutorial]](https://www.youtube.com/watch?v=A5YSbgqr3sc&t=313s)
