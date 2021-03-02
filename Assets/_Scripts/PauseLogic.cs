@@ -5,17 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class PauseLogic : MonoBehaviour
 {
+    // Wheter the game is currently pause or not.
     public static bool GameIsPaused = false;
 
+    // Reference to the Pause Panel UI.
     public GameObject pausePanelUI;
 
-    // Update is called once per frame
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("Pressed ESC!");
-
             if (GameIsPaused)
             {
                 Debug.Log("Paused!");

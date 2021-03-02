@@ -16,6 +16,7 @@ public class Background : MonoBehaviour
     /// </summary>
     void Start()
     {
+        // Get the reference.
         mat = GetComponent<Renderer>().material;
     }
 
@@ -24,6 +25,7 @@ public class Background : MonoBehaviour
     /// </summary>
     void Update()
     {
+        // Offset the material based on time.
         offset += (Time.deltaTime / 20.0f);
         mat.SetTextureOffset("_MainTex", new Vector2(offset, 0));
     }

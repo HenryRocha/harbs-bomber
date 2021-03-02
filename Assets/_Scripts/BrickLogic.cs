@@ -21,7 +21,7 @@ public class BrickLogic : MonoBehaviour
     // Variable to store the starting amount of hitpoints.
     public int startingHitpoints;
 
-
+    // Holds the reference to the Audio Source.
     [SerializeField]
     private AudioSource audioSource;
 
@@ -31,18 +31,12 @@ public class BrickLogic : MonoBehaviour
     /// </summary>
     void Start()
     {
+        // Get a reference to the Audio Source.
         audioSource = GetComponent<AudioSource>();
 
+        // Render the sprite based on the starting hitpoints.
         spriteRenderer.sprite = sprites[hitpoints];
         startingHitpoints = hitpoints;
-    }
-
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    void Update()
-    {
-
     }
 
     /// <summary>
@@ -58,11 +52,14 @@ public class BrickLogic : MonoBehaviour
         if (hitpoints < 0)
         {
             pointsUI.UpdatePoints(+100 * startingHitpoints);
+
+            // Play sound before death, and wait until the sound is done to destroy the object.
             audioSource.Play();
             Destroy(this.gameObject, audioSource.clip.length);
         }
         else
         {
+            // Rerender the new sprite, based on the new hitpoints.
             spriteRenderer.sprite = sprites[hitpoints];
         }
     }

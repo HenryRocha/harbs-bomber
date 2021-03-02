@@ -42,6 +42,7 @@ public class BrickSpawner : MonoBehaviour
     /// </summary>
     void Update()
     {
+        // If all bricks are destroyed, change the scene.
         if (transform.childCount <= 0) {
             SceneManager.LoadScene("YouWin");
         }

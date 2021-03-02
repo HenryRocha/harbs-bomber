@@ -11,7 +11,10 @@ public class PointsUI : MonoBehaviour
     // Reference to the Text object which is used to display the points on the screen.
     private Text pointsTextUI;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before
+    /// any of the Update methods is called the first time.
+    /// </summary>
     void Start()
     {
         // Get the reference to the Text component.

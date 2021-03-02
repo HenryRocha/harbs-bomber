@@ -8,11 +8,15 @@ public class MovimentoRaquete : MonoBehaviour
     [Range(1, 10)]
     public float speed = 8.0f;
 
+    // Variables to help prevent the paddle from going off-screen.
     private Vector2 screenBounds;
     private float objectWidth;
     private float objectHeight;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before
+    /// any of the Update methods is called the first time.
+    /// </summary>
     void Start()
     {
         // Get the screen boundaries.
@@ -23,7 +27,9 @@ public class MovimentoRaquete : MonoBehaviour
         objectHeight = transform.GetComponent<SpriteRenderer>().bounds.extents.y; //extents = size of height / 2
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
     void Update()
     {
         // Get the current direction.

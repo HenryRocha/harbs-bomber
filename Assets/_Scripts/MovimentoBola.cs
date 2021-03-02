@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class MovimentoBola : MonoBehaviour
 {
+    // Base speed.
     [Range(1, 15)]
     public float baseSpeed = 500.0f;
 
+    // Reference to this object's Rigid Body 2D.
     private Rigidbody2D rb2d;
     
+    // If the game has started or not.
     private bool gameStarted = false;
+
+    // Reference to the ball's default position above the paddle.
     public Transform ballDefaultPosition;
 
     // Reference to the LivesUI class.
@@ -22,7 +27,9 @@ public class MovimentoBola : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
     void Update()
     {
         if (!gameStarted)

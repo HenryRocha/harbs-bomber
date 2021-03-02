@@ -12,7 +12,10 @@ public class LivesUI : MonoBehaviour
     // Reference to the Text object, which is used to display the lives on the screen.
     private Text livesTextUI;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before
+    /// any of the Update methods is called the first time.
+    /// </summary>
     void Start()
     {
         // Get the reference to the Text component.
@@ -39,6 +42,7 @@ public class LivesUI : MonoBehaviour
 
     private void UpdateText(int newLives)
     {
+        // Update the UI text.
         livesTextUI.text = $"Lives: {newLives}";
     }
 }
